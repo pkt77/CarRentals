@@ -1,0 +1,53 @@
+package com.revature.rentals.repo;
+
+import com.revature.rentals.data.Vehicle;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.Collection;
+
+public class PostgresRepository implements Repository {
+    private final Connection connection;
+
+    static {
+        try {
+            Class.forName("org.postgresql.Driver");
+        } catch (ClassNotFoundException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public PostgresRepository(String url, String username, String password) throws SQLException {
+        connection = DriverManager.getConnection("jdbc:postgresql://" + url, username, password);
+    }
+
+    @Override
+    public Collection<Vehicle> getVehicles() {
+        Collection<Vehicle> vehicles = new ArrayList<>();
+
+        try (PreparedStatement get = connection.prepareStatement("SELECT * FROM vehicles")) {
+            ResultSet result = get.executeQuery();
+
+            while (result.next()) {
+                vehicles.add(new Vehicle(result.getString(1), result.getString(3), result.getString(4),
+                        result.getString(5), result.getString(7), result.getInt(2), result.getInt(6)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return vehicles;
+    }
+
+    @Override
+    public void close() {
+        try {
+            connection.close();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+}

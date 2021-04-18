@@ -226,4 +226,4 @@ buildNumber.properties
 
 # End of https://www.toptal.com/developers/gitignore/api/java,eclipse,intellij+all,macos,maven
 
-transactions*
+src/main/webapp/WEB-INF/db.properties
