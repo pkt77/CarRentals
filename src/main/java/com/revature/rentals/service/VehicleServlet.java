@@ -3,11 +3,13 @@ package com.revature.rentals.service;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.rentals.repo.Repository;
 
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+@WebServlet("/vehicles/*")
 public class VehicleServlet extends HttpServlet {
 
     @Override

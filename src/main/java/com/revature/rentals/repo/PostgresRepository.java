@@ -1,5 +1,6 @@
 package com.revature.rentals.repo;
 
+import com.revature.rentals.data.Customer;
 import com.revature.rentals.data.Vehicle;
 
 import java.sql.Connection;
@@ -23,6 +24,29 @@ public class PostgresRepository implements Repository {
 
     public PostgresRepository(String url, String username, String password) throws SQLException {
         connection = DriverManager.getConnection("jdbc:postgresql://" + url, username, password);
+    }
+
+    @Override
+    public Customer login(String username, String password) {
+        try (PreparedStatement select = connection.prepareStatement("SELECT password_hash, salt FROM customers WHERE username = ?")) {
+            select.setString(1, username);
+
+            ResultSet result = select.executeQuery();
+
+            if (!result.next()) {
+                return null;
+            }
+
+            Customer customer = new Customer(username, result.getBytes(1), result.getBytes(2));
+
+            if (customer.correctPassword(password)) {
+
+                return customer;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 
     @Override

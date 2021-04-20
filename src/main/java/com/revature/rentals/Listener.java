@@ -5,6 +5,7 @@ import com.revature.rentals.repo.Repository;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
+import javax.servlet.annotation.WebListener;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionListener;
 import java.io.BufferedReader;
@@ -14,6 +15,7 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
+@WebListener
 public class Listener implements ServletContextListener, HttpSessionListener, HttpSessionAttributeListener {
     private Repository repo;
 
