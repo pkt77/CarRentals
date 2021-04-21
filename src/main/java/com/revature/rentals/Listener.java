@@ -1,6 +1,6 @@
 package com.revature.rentals;
 
-import com.revature.rentals.repo.PostgresRepository;
+import com.revature.rentals.repo.HibernateRepository;
 import com.revature.rentals.repo.Repository;
 
 import javax.servlet.ServletContextEvent;
@@ -11,7 +11,6 @@ import javax.servlet.http.HttpSessionListener;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -34,10 +33,11 @@ public class Listener implements ServletContextListener, HttpSessionListener, Ht
                 settings.put(setting[0], setting[1]);
             }
 
-            repo = new PostgresRepository(settings.get("address"), settings.get("username"), settings.get("password"));
+            repo = new HibernateRepository(settings.get("address"), settings.get("username"), settings.get("password"));
+            //new PostgresRepository(settings.get("address"), settings.get("username"), settings.get("password"));
 
             sce.getServletContext().setAttribute("repo", repo);
-        } catch (SQLException | IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
     }

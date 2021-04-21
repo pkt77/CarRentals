@@ -2,6 +2,10 @@ package com.revature.rentals.data;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -9,10 +13,14 @@ import java.security.SecureRandom;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
+@Entity
+@Table(name = "customers")
 public class Customer {
-    private final String username;
+    @Id
+    private String username;
 
     @JsonIgnore
+    @Column(name = "password_hash")
     private byte[] passwordHash;
     @JsonIgnore
     private byte[] salt;
@@ -27,6 +35,8 @@ public class Customer {
         this.passwordHash = passwordHash;
         this.salt = salt;
     }
+
+    public Customer() {}
 
     @Override
     public boolean equals(Object other) {

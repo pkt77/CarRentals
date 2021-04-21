@@ -1,15 +1,29 @@
 package com.revature.rentals.data;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "providers")
 public class Provider {
-    private final int id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
 
-    private final String company;
-    private final String street;
-    private final String city;
-    private final String state;
+    private String company;
+    private String street;
+    private String city;
+    private String state;
 
-    private final float lat;
-    private final float longitude;
+    private float lat;
+    @Column(name = "long")
+    private float longitude;
+
+    public Provider() {}
 
     public Provider(int id, String company, String street, String city, String state, float lat, float longitude) {
         this.id = id;

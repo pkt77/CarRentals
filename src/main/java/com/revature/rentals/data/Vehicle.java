@@ -1,14 +1,25 @@
 package com.revature.rentals.data;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.Table;
+
+@Entity
+@Table(name = "vehicles")
 public class Vehicle {
-    private final String vin;
-    private final String style;
-    private final String model;
-    private final String make;
-    private final String image;
+    @Id
+    private String vin;
+    private String style;
+    private String model;
+    private String make;
+    private String image;
 
     private int mileage;
+    @Column(name = "daily_cost")
     private int dailyCost;
+
+    public Vehicle() {}
 
     public Vehicle(String vin, String style, String model, String make, String image, int mileage, int dailyCost) {
         this.vin = vin;
