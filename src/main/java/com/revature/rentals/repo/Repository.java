@@ -1,6 +1,7 @@
 package com.revature.rentals.repo;
 
 import com.revature.rentals.data.Customer;
+import com.revature.rentals.data.Provider;
 import com.revature.rentals.data.Vehicle;
 
 import java.io.Closeable;
@@ -11,4 +12,6 @@ public interface Repository extends Closeable {
     Customer login(String username, String password);
 
     Collection<Vehicle> getVehicles();
+
+    Collection<Provider> getProviders();
 }

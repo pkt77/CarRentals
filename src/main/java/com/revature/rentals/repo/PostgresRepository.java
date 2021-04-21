@@ -1,6 +1,7 @@
 package com.revature.rentals.repo;
 
 import com.revature.rentals.data.Customer;
+import com.revature.rentals.data.Provider;
 import com.revature.rentals.data.Vehicle;
 
 import java.sql.Connection;
@@ -64,6 +65,23 @@ public class PostgresRepository implements Repository {
             e.printStackTrace();
         }
         return vehicles;
+    }
+
+    @Override
+    public Collection<Provider> getProviders() {
+        Collection<Provider> providers = new ArrayList<>();
+
+        try (PreparedStatement get = connection.prepareStatement("SELECT * FROM providers")) {
+            ResultSet result = get.executeQuery();
+
+            while (result.next()) {
+                providers.add(new Provider(result.getInt(1), result.getString(2), result.getString(3), result.getString(4),
+                        result.getString(5), result.getFloat(6), result.getFloat(7)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return providers;
     }
 
     @Override
