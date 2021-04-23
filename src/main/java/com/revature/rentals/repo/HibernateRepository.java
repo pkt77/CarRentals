@@ -5,8 +5,10 @@ import com.revature.rentals.data.Provider;
 import com.revature.rentals.data.Vehicle;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
+import javax.persistence.PersistenceException;
 import java.util.Collection;
 
 public class HibernateRepository implements Repository {
@@ -18,6 +20,19 @@ public class HibernateRepository implements Repository {
                 .setProperty("hibernate.connection.username", username)
                 .setProperty("hibernate.connection.password", password)
                 .buildSessionFactory();
+    }
+
+    @Override
+    public boolean createCustomer(Customer customer) {
+        try (Session session = sessions.openSession()) {
+            Transaction tran = session.beginTransaction();
+
+            session.save(customer);
+            tran.commit();
+        } catch (PersistenceException e) {
+            return false;
+        }
+        return true;
     }
 
     @Override

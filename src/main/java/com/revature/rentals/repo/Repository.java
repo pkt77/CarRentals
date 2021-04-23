@@ -9,6 +9,8 @@ import java.util.Collection;
 
 public interface Repository extends Closeable {
 
+    boolean createCustomer(Customer customer);
+
     Customer login(String username, String password);
 
     Collection<Vehicle> getVehicles();

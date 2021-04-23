@@ -28,6 +28,11 @@ public class PostgresRepository implements Repository {
     }
 
     @Override
+    public boolean createCustomer(Customer customer) {
+        return false;
+    }
+
+    @Override
     public Customer login(String username, String password) {
         try (PreparedStatement select = connection.prepareStatement("SELECT password_hash, salt FROM customers WHERE username = ?")) {
             select.setString(1, username);
@@ -38,12 +43,12 @@ public class PostgresRepository implements Repository {
                 return null;
             }
 
-            Customer customer = new Customer(username, result.getBytes(1), result.getBytes(2));
+        /*    Customer customer = new Customer(username, result.getBytes(1), result.getBytes(2));
 
             if (customer.correctPassword(password)) {
 
                 return customer;
-            }
+            }*/
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -6,10 +6,13 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.nio.charset.StandardCharsets;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 import java.security.SecureRandom;
+import java.sql.Date;
 import java.util.Arrays;
 import java.util.concurrent.ThreadLocalRandom;
 
@@ -25,15 +28,43 @@ public class Customer {
     @JsonIgnore
     private byte[] salt;
 
-    public Customer(String username, String password) {
+    @Column(name = "first_name")
+    private String firstName;
+
+    @Column(name = "last_name")
+    private String lastName;
+
+    @Temporal(TemporalType.DATE)
+    private Date dob;
+
+    private String phone;
+    private String email;
+    private String street;
+    private String city;
+    private String state;
+    private int post;
+
+    private String license;
+    private String issued;
+    @Temporal(TemporalType.DATE)
+    private Date expires;
+
+    public Customer(String username, String password, String firstName, String lastName, Date dob, String phone, String email, String street,
+                    String city, String state, int post, String license, String issued, Date expires) {
         this.username = username;
         this.passwordHash = hashPassword(password, salt = genSalt());
-    }
-
-    public Customer(String username, byte[] passwordHash, byte[] salt) {
-        this.username = username;
-        this.passwordHash = passwordHash;
-        this.salt = salt;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.dob = dob;
+        this.phone = phone;
+        this.email = email;
+        this.street = street;
+        this.city = city;
+        this.state = state;
+        this.post = post;
+        this.license = license;
+        this.issued = issued;
+        this.expires = expires;
     }
 
     public Customer() {}
@@ -53,8 +84,20 @@ public class Customer {
 
     @Override
     public String toString() {
-        return "Account{" +
-                "name='" + username + '\'' +
+        return "Customer{" +
+                "username='" + username + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", lastName='" + lastName + '\'' +
+                ", dob=" + dob +
+                ", phone='" + phone + '\'' +
+                ", email='" + email + '\'' +
+                ", street='" + street + '\'' +
+                ", city='" + city + '\'' +
+                ", state='" + state + '\'' +
+                ", post=" + post +
+                ", license='" + license + '\'' +
+                ", issued='" + issued + '\'' +
+                ", expires=" + expires +
                 '}';
     }
 
