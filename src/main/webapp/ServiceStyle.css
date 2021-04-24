@@ -1,0 +1,244 @@
+*{
+    padding: 0;
+    margin: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+  }
+  body{
+    font-family: montserrat;
+  }
+  nav{
+
+    /*background: #0082e6;*/
+    background:#1d2f42;
+    height: 80px;
+    width: 100%;
+  }
+  label.logo{
+    color: white;
+    font-size: 35px;
+    line-height: 80px;
+    padding: 0 100px;
+    font-weight: bold;
+  }
+  nav ul{
+    float: right;
+    margin-right: 20px;
+  }
+  nav ul li{
+    display: inline-block;
+    line-height: 80px;
+    margin: 0 5px;
+  }
+  nav ul li a{
+    color: white;
+    font-size: 17px;
+    padding: 7px 13px;
+    border-radius: 3px;
+    text-transform: uppercase;
+  }
+  a.active,a:hover{
+    /*background: #779bb6;*/
+    background: #45637a;
+    transition: .5s;
+  }
+
+  
+  @media (max-width: 952px){
+    label.logo{
+      font-size: 30px;
+      padding-left: 50px;
+    }
+    nav ul li a{
+      font-size: 16px;
+    }
+  }
+  @media (max-width: 858px){
+    .checkbtn{
+      display: block;
+    }
+    ul{
+      position: fixed;
+      width: 100%;
+      height: 100vh;
+      background: #2c3e50;
+      top: 80px;
+      left: -100%;
+      text-align: center;
+      transition: all .5s;
+    }
+    nav ul li{
+      display: block;
+      margin: 50px 0;
+      line-height: 30px;
+    }
+    nav ul li a{
+      font-size: 20px;
+    }
+    a:hover,a.active{
+      background: none;
+      color: #0082e6;
+    }
+    #check:checked ~ ul{
+      left: 0;
+    }
+  }
+
+
+  #car3
+  {
+      padding-left: 120px;
+  }
+  #Header1
+  {
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-size: 26px;
+      font-weight:bold;
+      padding-left: 120px;
+      padding-top: 30px;
+      padding-bottom: 20px;
+  }
+  #logoID
+  {
+      padding-top: 30px;
+      padding-left: 120px;
+  }
+  #safetyPara
+  {
+      position: absolute;
+      left: 300px;
+      right: 100px;
+      top: 710px;
+      /*
+       font-family:'Lucida Sans';
+       
+      */
+      font-family:'Courier New', Courier, monospace;
+      font-size: 23px;
+      font-weight: bold;
+  }
+
+
+
+  #displayCarID
+  {
+      position: absolute;
+      left: 1020px;
+      top:900px;
+  }
+  #myCar
+  {
+      position: absolute;
+      left: 120px;
+      top: 900px;
+      color:rgb(60, 78, 31);
+      font-size: 30px;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  #carPara
+  {
+    position: absolute;
+    left: 120px;
+    right: 480px;
+    top: 950px;
+    font-family:Bookman old style;
+    font-size: 23px;
+    font-weight:100;
+  }
+
+
+
+  #carSubmit
+  {
+      position: absolute;
+      left: 120px;
+      top: 1100px;
+      font-weight: bold;
+      color: white;
+      border: 2px solid black;
+      background-color: #0082e6;
+      width: 400px;
+      height: 50px;
+  }
+
+  #displaySUVID
+  {
+      position: absolute;
+      left: 980px;
+      top: 1250px;
+  }
+  #mySUV
+  {
+      position: absolute;
+      left: 120px;
+      top: 1300px;
+      color:rgb(60, 78, 31);
+      font-size: 30px;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  #SUVPara
+  {
+    position: absolute;
+    left: 120px;
+    right: 480px;
+    top: 1360px;
+    font-family:Bookman old style;
+    font-size: 23px;
+    font-weight:100;
+  }
+  #suvSubmit
+  {
+      position: absolute;
+      left: 120px;
+      top: 1500px;
+      font-weight: bold;
+      color: white;
+      border: 2px solid black;
+      background-color: #0082e6;
+      width: 400px;
+      height: 50px;
+  }
+
+
+  #displayVanID
+  {
+      position: absolute;
+      left: 980px;
+      top: 1650px;
+  }
+  #myVan
+  {
+      position: absolute;
+      left: 120px;
+      top: 1700px;
+      color:rgb(60, 78, 31);
+      font-size: 30px;
+      font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+  }
+  #VanPara
+  {
+    position: absolute;
+    left: 120px;
+    right: 480px;
+    top: 1760px;
+    font-family:Bookman old style;
+    font-size: 23px;
+    font-weight:100;
+  }
+  #VanSubmit
+  {
+      position: absolute;
+      left: 120px;
+      top: 1920px;
+      font-weight: bold;
+      color: white;
+      border: 2px solid black;
+      background-color: #0082e6;
+      width: 400px;
+      height: 50px;
+  }
+
+    
+
+
