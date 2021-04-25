@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet("/vehicles/*")
+@WebServlet("/api/vehicles/*")
 public class VehicleServlet extends HttpServlet {
 
     @Override

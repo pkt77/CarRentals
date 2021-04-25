@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-@WebServlet("/login")
+@WebServlet("/api/login")
 public class LoginServlet extends HttpServlet {
 
     @Override

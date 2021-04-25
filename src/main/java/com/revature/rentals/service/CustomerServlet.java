@@ -12,7 +12,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet("/customer")
+@WebServlet("/api/customer")
 public class CustomerServlet extends HttpServlet {
 
     @Override
