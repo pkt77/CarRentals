@@ -2,6 +2,7 @@ package com.revature.rentals.repo;
 
 import com.revature.rentals.data.Customer;
 import com.revature.rentals.data.Provider;
+import com.revature.rentals.data.Reservation;
 import com.revature.rentals.data.Vehicle;
 
 import java.sql.Connection;
@@ -56,6 +57,11 @@ public class PostgresRepository implements Repository {
     }
 
     @Override
+    public Vehicle getVehicle(String vin) {
+        return null;
+    }
+
+    @Override
     public Collection<Vehicle> getVehicles() {
         Collection<Vehicle> vehicles = new ArrayList<>();
 
@@ -70,6 +76,11 @@ public class PostgresRepository implements Repository {
             e.printStackTrace();
         }
         return vehicles;
+    }
+
+    @Override
+    public Provider getProvider(int id) {
+        return null;
     }
 
     @Override
@@ -88,6 +99,9 @@ public class PostgresRepository implements Repository {
         }
         return providers;
     }
+
+    @Override
+    public void createReservation(Reservation reservation) {}
 
     @Override
     public void close() {

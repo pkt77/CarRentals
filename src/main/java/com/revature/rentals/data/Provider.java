@@ -5,13 +5,15 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
 @Table(name = "providers")
 public class Provider {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @SequenceGenerator(name = "providers_id_seq", sequenceName = "providers_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "providers_id_seq")
     private int id;
 
     private String company;
@@ -24,6 +26,10 @@ public class Provider {
     private float longitude;
 
     public Provider() {}
+
+    public Provider(int id) {
+        this.id = id;
+    }
 
     public Provider(int id, String company, String street, String city, String state, float lat, float longitude) {
         this.id = id;

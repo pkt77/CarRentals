@@ -9,10 +9,11 @@
 
         <property name="hibernate.connection.pool_size">10</property>
 
-        <property name="hibernate.hbm2ddl.auto">none</property>
+        <property name="hibernate.hbm2ddl.auto">validate</property>
 
         <mapping class="com.revature.rentals.data.Customer"/>
         <mapping class="com.revature.rentals.data.Provider"/>
         <mapping class="com.revature.rentals.data.Vehicle"/>
+        <mapping class="com.revature.rentals.data.Reservation"/>
     </session-factory>
 </hibernate-configuration>

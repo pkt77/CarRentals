@@ -21,6 +21,10 @@ public class Vehicle {
 
     public Vehicle() {}
 
+    public Vehicle(String vin) {
+        this.vin = vin;
+    }
+
     public Vehicle(String vin, String style, String model, String make, String image, int mileage, int dailyCost) {
         this.vin = vin;
         this.style = style;

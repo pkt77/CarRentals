@@ -125,6 +125,38 @@ public class Customer {
         this.salt = salt;
     }
 
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public String getState() {
+        return state;
+    }
+
+    public int getPost() {
+        return post;
+    }
+
     public static boolean validName(String name) {
         return name.matches("^[\\p{L} .'-]+$");
     }

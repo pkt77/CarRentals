@@ -2,6 +2,9 @@ package com.revature.rentals;
 
 import com.revature.rentals.repo.HibernateRepository;
 import com.revature.rentals.repo.Repository;
+import org.simplejavamail.api.mailer.Mailer;
+import org.simplejavamail.api.mailer.config.TransportStrategy;
+import org.simplejavamail.mailer.MailerBuilder;
 
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
@@ -30,13 +33,21 @@ public class Listener implements ServletContextListener, HttpSessionListener, Ht
             while ((line = reader.readLine()) != null) {
                 String[] setting = line.split("=");
 
-                settings.put(setting[0], setting[1]);
+                if (setting.length > 1) {
+                    settings.put(setting[0], setting[1]);
+                }
             }
 
             repo = new HibernateRepository(settings.get("address"), settings.get("username"), settings.get("password"));
             //new PostgresRepository(settings.get("address"), settings.get("username"), settings.get("password"));
 
             sce.getServletContext().setAttribute("repo", repo);
+
+            Mailer mailer = MailerBuilder.withTransportStrategy(TransportStrategy.SMTP_TLS)
+                    .withSMTPServer(settings.get("smtp_host"), Integer.parseInt(settings.get("smtp_port")), settings.get("email"), settings.get("email_password")).buildMailer();
+
+            mailer.testConnection();
+            sce.getServletContext().setAttribute("mailer", mailer);
         } catch (IOException e) {
             e.printStackTrace();
         }

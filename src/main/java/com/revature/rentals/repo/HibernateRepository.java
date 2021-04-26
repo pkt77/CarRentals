@@ -2,6 +2,7 @@ package com.revature.rentals.repo;
 
 import com.revature.rentals.data.Customer;
 import com.revature.rentals.data.Provider;
+import com.revature.rentals.data.Reservation;
 import com.revature.rentals.data.Vehicle;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -46,6 +47,16 @@ public class HibernateRepository implements Repository {
     }
 
     @Override
+    public Vehicle getVehicle(String vin) {
+        Session session = sessions.openSession();
+        Vehicle vehicle = session.get(Vehicle.class, vin);
+
+        session.close();
+
+        return vehicle;
+    }
+
+    @Override
     public Collection<Vehicle> getVehicles() {
         Session session = sessions.openSession();
         Collection<Vehicle> vehicles = session.createNativeQuery("SELECT * FROM vehicles", Vehicle.class).list();
@@ -55,12 +66,34 @@ public class HibernateRepository implements Repository {
     }
 
     @Override
+    public Provider getProvider(int id) {
+        Session session = sessions.openSession();
+        Provider provider = session.get(Provider.class, id);
+
+        session.close();
+
+        return provider;
+    }
+
+    @Override
     public Collection<Provider> getProviders() {
         Session session = sessions.openSession();
         Collection<Provider> providers = session.createNativeQuery("SELECT * FROM providers", Provider.class).list();
 
         session.close();
         return providers;
+    }
+
+    @Override
+    public void createReservation(Reservation reservation) {
+        try (Session session = sessions.openSession()) {
+            Transaction tran = session.beginTransaction();
+
+            session.persist(reservation);
+            tran.commit();
+        } catch (PersistenceException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
