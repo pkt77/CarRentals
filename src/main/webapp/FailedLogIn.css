@@ -7,7 +7,7 @@
   }
   body{
     font-family: montserrat;
-    background-image: url(/Pictures/BackgroundPic.jfif);
+    background-image: url(/Pictures/BackgroundPic3.jfif);
   }
   nav{
 
@@ -93,7 +93,7 @@
       font-size: 20px;
       font-weight: bold;
       font-family: 'Courier New', Courier, monospace;
-      color:red;
+      color:rgb(121, 3, 3);
   }
  #username
   {
