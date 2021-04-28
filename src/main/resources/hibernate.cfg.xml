@@ -12,6 +12,7 @@
         <property name="hibernate.hbm2ddl.auto">validate</property>
 
         <mapping class="com.revature.rentals.data.Customer"/>
+        <mapping class="com.revature.rentals.data.Employee"/>
         <mapping class="com.revature.rentals.data.Provider"/>
         <mapping class="com.revature.rentals.data.Vehicle"/>
         <mapping class="com.revature.rentals.data.Reservation"/>

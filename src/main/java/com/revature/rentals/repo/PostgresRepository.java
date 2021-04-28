@@ -1,6 +1,7 @@
 package com.revature.rentals.repo;
 
 import com.revature.rentals.data.Customer;
+import com.revature.rentals.data.Employee;
 import com.revature.rentals.data.Provider;
 import com.revature.rentals.data.Reservation;
 import com.revature.rentals.data.Vehicle;
@@ -53,6 +54,11 @@ public class PostgresRepository implements Repository {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return null;
+    }
+
+    @Override
+    public Employee loginEmployee(String username, String password) {
         return null;
     }
 

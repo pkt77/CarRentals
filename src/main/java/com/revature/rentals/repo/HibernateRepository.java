@@ -1,6 +1,7 @@
 package com.revature.rentals.repo;
 
 import com.revature.rentals.data.Customer;
+import com.revature.rentals.data.Employee;
 import com.revature.rentals.data.Provider;
 import com.revature.rentals.data.Reservation;
 import com.revature.rentals.data.Vehicle;
@@ -44,6 +45,16 @@ public class HibernateRepository implements Repository {
         session.close();
 
         return customer != null && customer.correctPassword(password) ? customer : null;
+    }
+
+    @Override
+    public Employee loginEmployee(String username, String password) {
+        Session session = sessions.openSession();
+        Employee employee = session.get(Employee.class, username);
+
+        session.close();
+
+        return employee != null && employee.correctPassword(password) ? employee : null;
     }
 
     @Override
