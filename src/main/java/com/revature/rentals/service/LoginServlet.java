@@ -1,6 +1,7 @@
 package com.revature.rentals.service;
 
 import com.revature.rentals.data.Customer;
+import com.revature.rentals.data.Employee;
 import com.revature.rentals.repo.Repository;
 
 import javax.servlet.annotation.WebServlet;
@@ -26,13 +27,19 @@ public class LoginServlet extends HttpServlet {
         HttpSession session = req.getSession();
         Customer customer = repo.login(username, password);
 
-        if (customer == null) {
-            session.invalidate();
-
-            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        if (customer != null) {
+            session.setAttribute("customer", customer);
             return;
         }
 
-        session.setAttribute("customer", customer);
+        Employee employee = repo.loginEmployee(username, password);
+
+        if (employee != null) {
+            session.setAttribute("employee", employee);
+            return;
+        }
+
+        session.invalidate();
+        resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
     }
 }
