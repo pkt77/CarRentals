@@ -1,5 +1,6 @@
 package com.revature.rentals.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.rentals.data.Customer;
 import com.revature.rentals.data.Provider;
 import com.revature.rentals.data.Reservation;
@@ -14,6 +15,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 import java.sql.Date;
 import java.text.NumberFormat;
 import java.util.concurrent.TimeUnit;
@@ -24,6 +26,20 @@ public class ReservationServlet extends HttpServlet {
 
     private static final double COST_PER_SEAT = 9.99;
     private static final double GPS_COST = 13.99;
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession(false);
+
+        if (session == null || session.getAttribute("employee") == null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
+        Repository repo = (Repository) req.getServletContext().getAttribute("repo");
+
+        resp.getWriter().write(new ObjectMapper().writeValueAsString(repo.getValidReservations()));
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {

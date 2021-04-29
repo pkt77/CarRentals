@@ -32,4 +32,6 @@ public interface Repository extends Closeable {
     Collection<Provider> getProviders();
 
     void createReservation(Reservation reservation);
+
+    Collection<Reservation> getValidReservations();
 }

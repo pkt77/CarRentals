@@ -11,6 +11,10 @@ import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
 
 import javax.persistence.PersistenceException;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
+import java.time.LocalDate;
 import java.util.Collection;
 
 public class HibernateRepository implements Repository {
@@ -134,6 +138,21 @@ public class HibernateRepository implements Repository {
         } catch (PersistenceException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public Collection<Reservation> getValidReservations() {
+        Session session = sessions.openSession();
+        CriteriaBuilder builder = session.getCriteriaBuilder();
+        CriteriaQuery<Reservation> query = builder.createQuery(Reservation.class);
+        Root<Reservation> root = query.from(Reservation.class);
+
+        query.select(root).where(builder.greaterThanOrEqualTo(root.get("returned"), LocalDate.now()));
+
+        Collection<Reservation> reservations = session.createQuery(query).getResultList();
+
+        session.close();
+        return reservations;
     }
 
     @Override

@@ -53,4 +53,32 @@ public class Reservation {
     public int getId() {
         return id;
     }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public Provider getProvider() {
+        return provider;
+    }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public Date getPickup() {
+        return pickup;
+    }
+
+    public Date getReturned() {
+        return returned;
+    }
+
+    public int getSafeSeats() {
+        return safe_seats;
+    }
+
+    public boolean isGps() {
+        return gps;
+    }
 }

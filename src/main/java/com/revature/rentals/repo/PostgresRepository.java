@@ -125,6 +125,11 @@ public class PostgresRepository implements Repository {
     public void createReservation(Reservation reservation) {}
 
     @Override
+    public Collection<Reservation> getValidReservations() {
+        return null;
+    }
+
+    @Override
     public void close() {
         try {
             connection.close();
