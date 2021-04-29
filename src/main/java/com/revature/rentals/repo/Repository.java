@@ -17,6 +17,12 @@ public interface Repository extends Closeable {
 
     Employee loginEmployee(String username, String password);
 
+    Customer getCustomer(String username);
+
+    Collection<Customer> getNewCustomers();
+
+    void saveCustomer(Customer customer);
+
     Vehicle getVehicle(String vin);
 
     Collection<Vehicle> getVehicles();

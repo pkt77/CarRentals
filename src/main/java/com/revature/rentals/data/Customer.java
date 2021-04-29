@@ -1,5 +1,7 @@
 package com.revature.rentals.data;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -30,6 +32,9 @@ public class Customer extends User {
     private String issued;
     @Temporal(TemporalType.DATE)
     private Date expires;
+
+    @JsonIgnore
+    private boolean enabled;
 
     public Customer() {}
 
@@ -98,5 +103,13 @@ public class Customer extends User {
 
     public int getPost() {
         return post;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

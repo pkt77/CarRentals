@@ -2,6 +2,7 @@ package com.revature.rentals.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.rentals.data.Customer;
+import com.revature.rentals.data.Employee;
 import com.revature.rentals.repo.Repository;
 
 import javax.servlet.annotation.WebServlet;
@@ -12,7 +13,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.sql.Date;
 
-@WebServlet("/api/customer")
+@WebServlet("/api/customer/*")
 public class CustomerServlet extends HttpServlet {
 
     @Override
@@ -26,7 +27,22 @@ public class CustomerServlet extends HttpServlet {
 
         Customer customer = (Customer) session.getAttribute("customer");
 
-        resp.getWriter().write(new ObjectMapper().writeValueAsString(customer));
+        if (customer != null) {
+            resp.getWriter().write(new ObjectMapper().writeValueAsString(customer));
+            return;
+        }
+
+        // Get all new customers if employee
+        Employee employee = (Employee) session.getAttribute("employee");
+
+        if (employee == null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
+        Repository repo = (Repository) req.getServletContext().getAttribute("repo");
+
+        resp.getWriter().write(new ObjectMapper().writeValueAsString(repo.getNewCustomers()));
     }
 
     @Override
@@ -59,6 +75,30 @@ public class CustomerServlet extends HttpServlet {
         } catch (Exception e) {
             e.printStackTrace();
             resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        }
+    }
+
+    @Override
+    protected void doPut(HttpServletRequest req, HttpServletResponse resp) {
+        // Currently PUT will only enable customers, so no data is actually needed.
+        HttpSession session = req.getSession(false);
+        Employee employee;
+
+        if (session == null || (employee = (Employee) session.getAttribute("employee")) == null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
+        String[] uri = req.getRequestURI().split("/");
+        String username = uri[uri.length - 1];
+        Repository repo = (Repository) req.getServletContext().getAttribute("repo");
+        Customer customer = repo.getCustomer(username);
+
+        if (customer == null) {
+            resp.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } else {
+            customer.setEnabled(true);
+            repo.saveCustomer(customer);
         }
     }
 }

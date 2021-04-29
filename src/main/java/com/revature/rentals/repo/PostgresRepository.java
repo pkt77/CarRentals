@@ -63,6 +63,21 @@ public class PostgresRepository implements Repository {
     }
 
     @Override
+    public Customer getCustomer(String username) {
+        return null;
+    }
+
+    @Override
+    public Collection<Customer> getNewCustomers() {
+        return null;
+    }
+
+    @Override
+    public void saveCustomer(Customer customer) {
+
+    }
+
+    @Override
     public Vehicle getVehicle(String vin) {
         return null;
     }

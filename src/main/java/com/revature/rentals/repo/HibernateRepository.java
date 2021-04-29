@@ -58,6 +58,35 @@ public class HibernateRepository implements Repository {
     }
 
     @Override
+    public Customer getCustomer(String username) {
+        Session session = sessions.openSession();
+        Customer customer = session.get(Customer.class, username);
+
+        session.close();
+
+        return customer;
+    }
+
+    @Override
+    public Collection<Customer> getNewCustomers() {
+        Session session = sessions.openSession();
+        Collection<Customer> newCustomers = session.createNativeQuery("SELECT * FROM customers WHERE enabled=false", Customer.class).list();
+
+        session.close();
+        return newCustomers;
+    }
+
+    @Override
+    public void saveCustomer(Customer customer) {
+        Session session = sessions.openSession();
+        Transaction transaction = session.beginTransaction();
+
+        session.update(customer);
+        transaction.commit();
+        session.close();
+    }
+
+    @Override
     public Vehicle getVehicle(String vin) {
         Session session = sessions.openSession();
         Vehicle vehicle = session.get(Vehicle.class, vin);
