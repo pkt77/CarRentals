@@ -1,248 +1,32 @@
-#navID
-{
+body {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+nav {
     height: 100px;
 }
-#logoID
-{
-    padding-left: 80px;
-    font-size: 30px;
-    
-}
-#homeID
-{
-    padding-left: 500px;
-    padding-right: 50px;
-    font-size: 20px;
+
+nav > div {
+    margin-left: 50%;
+    float: right;
 }
 
-#LoginID
-{
+.nav-text {
     padding-right: 50px;
     font-size: 20px;
-}
-#ServiceID
-{
-    padding-right: 50px;
-    font-size: 20px;
-}
-#ContactID
-{
-    padding-right: 50px;
-    font-size: 20px;
-}
-#SignUpID
-{
-    padding-right: 50px;
-    font-size: 20px;
+    cursor: pointer;
 }
 
-  #car1
-  {
-      padding-left: 120px;
-  }
-  #Description
-  {
+#container {
+    min-height: 500px;
+}
+
+#description {
     text-align: center;
     padding-top: 50px;
     padding-left: 220px;
     padding-right: 220px;
     font-size: 30px;
-    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-  }
-
- 
-  #pictureHeader
-  {
-    padding-top: 30px;
-    font-family:'Courier New', Courier, monospace;
-    color:#1d2f42;
-    padding-left: 440px;
-    font-size: 40px;
-    font-weight: bold;
-
-  }
-  #newYork
-  {
-    
-    padding-top: 50px;
-    padding-left: 80px;
-  }
-  #LosAngeles
-  {
-    padding-top: 50px;
-    padding-left: 90px;
-
-  }
-  #orlando
-  {
-    padding-top: 50px;
-    padding-left: 90px;
-  }
-  #nycaption
-  {
-    position: absolute;
-    font-family: Bookman old style;
-    font-size: 20px;
-    font-weight:bold;
-    padding-top: 15px;
-    padding-left: 220px;
-  }
-  #losCaption
-  {
-    position: absolute;
-    left: 700px;
-    font-family: Bookman old style;
-    font-size: 20px;
-    font-weight:bold;
-    padding-top: 15px;
-  }
-  #orlandoCaption
-  {
-    position: absolute;
-    left: 1220px;
-    font-family: Bookman old style;
-    font-size: 20px;
-    font-weight:bold;
-    padding-top: 15px;
-  }
-
-
-
-  #boston
-  {
-    
-    padding-top: 50px;
-    padding-left: 80px;
-  }
-  #SanFransisco
-  {
-    
-    padding-top: 50px;
-    padding-left: 90px;
-  }
-  #Virginia
-  {
-    
-    padding-top: 50px;
-    padding-left: 90px;
-  }
-
-
-  #bostonCaption
-  {
-    position: absolute;
-    padding-left: 220px;
-    font-family: Bookman old style;
-    font-size: 20px;
-    font-weight:bold;
-    padding-top: 15px;
-  }
-  #SanCaption
-  {
-    position: absolute;
-    left: 700px;
-    font-family: Bookman old style;
-    font-size: 20px;
-    font-weight:bold;
-    padding-top: 15px;
-  }
-  #virginiaCaption
-  {
-    position: absolute;
-    left: 1220px;
-    font-family: Bookman old style;
-    font-size: 20px;
-    font-weight:bold;
-    padding-top: 15px;
-  }
-  #locationID
-  {
-    font-family:'Courier New', Courier, monospace;
-    color:#1d2f42;
-    padding-top: 170px;
-    padding-left: 600px;
-  }
-  #LocationPic
-  {
-    padding-top: 60px;
-    padding-left: 70px;
-  }
- 
-  #footerID
-  {
-      height: 480px;
-      background-color: rgb(19, 17, 17);
-  }
- 
-  #rowID1
-  {
-    position: absolute;
-    left: 200px;
-    top: 2800px;
-    color:white;
-  }
-  #column1
-  {
-    position: absolute;
-    left: 200px;
-    top: 2850px;
-    color:white;
-  }
-
-  #rowID2
-  {
-    position: absolute;
-    left: 500px;
-    top: 2800px;
-    color:white;
-  }
-  #column2
-  {
-    position: absolute;
-    left: 500px;
-    top: 2850px;
-    color:white;
-  }
-  #rowID3
-  {
-    position: absolute;
-    left: 800px;
-    top: 2800px;
-    color:white;
-  }
-  #column3
-  {
-    position: absolute;
-    left: 800px;
-    top: 2850px;
-    color:white;
-  }
-  #rowID4
-  {
-    position: absolute;
-    left: 1200px;
-    top: 2800px;
-    color:white;
-  }
-  #column4
-  {
-    position: absolute;
-    left: 1200px;
-    top: 2850px;
-    color:white;
-  }
-
-  #textID
-  {
-      padding-top: 290px;
-      text-align: center;
-      color: aliceblue;
-  
-  }
-  #textID2
-  {
-    
-      padding-top: 20px;
-      text-align: center;
-
-  }
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
