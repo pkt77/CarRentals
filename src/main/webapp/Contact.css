@@ -1,0 +1,39 @@
+#FAQID
+{
+    padding-top: 100px;
+    padding-left: 100px;
+}
+#questionID
+{
+    padding-top: 40px;
+    padding-left: 100px;
+    font-size: 20px;
+    font-weight: bold;
+}
+#ansID
+{
+    padding-top: 25px;
+    padding-left: 100px;
+    font-size: 18px;
+}
+#contactID
+{
+    padding-top: 100px;
+    text-align: center;
+}
+#listID
+{
+    padding-top: 50px;
+    padding-left: 640px;
+    
+}
+#locationID
+{
+    padding-top: 50px;
+    padding-left: 100px;
+}
+#imageID
+{
+    padding-top: 60px;
+    padding-left: 100px;
+}
