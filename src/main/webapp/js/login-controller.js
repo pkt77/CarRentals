@@ -19,8 +19,13 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhttp.onreadystatechange = function () {
-            if (xhttp.readyState === 4) {
+            if (xhttp.readyState === 4 && xhttp.status==200) {
                 console.log(xhttp.status);
+                var opened= window.open("/views/welcome.html");
+            }
+            else
+            {
+                document.getElementById("msg").innerHTML="Password didn't match. Please try again !";
             }
         }
 
