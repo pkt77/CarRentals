@@ -12,7 +12,7 @@ import java.io.File;
 import java.io.IOException;
 import java.nio.charset.Charset;
 
-@WebServlet({"", "/welcome", "/login", "/services", "/register", "/vehicles"})
+@WebServlet({"", "/welcome", "/login", "/services", "/register", "/contact"})
 public class PageServlet extends HttpServlet {
     private String index;
 

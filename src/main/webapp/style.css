@@ -16,10 +16,17 @@ nav > div {
     padding-right: 50px;
     font-size: 20px;
     cursor: pointer;
+    display: inline;
 }
 
 #container {
     min-height: 500px;
+}
+
+.link {
+    color: cornflowerblue;
+    text-decoration: underline;
+    cursor: pointer;
 }
 
 #description {
