@@ -14,18 +14,15 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
         let xhttp = new XMLHttpRequest();
 
         xhttp.open("POST", "/api/login");
-
-        console.log("Changing ready state " + xhttp.readyState);
         xhttp.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
 
         xhttp.onreadystatechange = function () {
-            if (xhttp.readyState === 4 && xhttp.status==200) {
-                console.log(xhttp.status);
-                var opened= window.open("/views/welcome.html");
-            }
-            else
-            {
-                document.getElementById("msg").innerHTML="Password didn't match. Please try again !";
+            if (xhttp.readyState === 4) {
+                if (xhttp.status === 200) {
+                    loadPage("/welcome");
+                } else {
+                    document.getElementById("msg").innerHTML = "That username or password did not match our records";
+                }
             }
         }
 
