@@ -19,6 +19,7 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
         xhttp.onreadystatechange = function () {
             if (xhttp.readyState === 4) {
                 if (xhttp.status === 200) {
+                    displayUser();
                     loadPage("/welcome");
                 } else {
                     document.getElementById("msg").innerHTML = "That username or password did not match our records";

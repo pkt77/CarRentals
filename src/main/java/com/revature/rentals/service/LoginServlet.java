@@ -1,7 +1,9 @@
 package com.revature.rentals.service;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.rentals.data.Customer;
 import com.revature.rentals.data.Employee;
+import com.revature.rentals.data.User;
 import com.revature.rentals.repo.Repository;
 
 import javax.servlet.annotation.WebServlet;
@@ -9,9 +11,32 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.io.IOException;
 
 @WebServlet("/api/login")
 public class LoginServlet extends HttpServlet {
+
+    @Override
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws IOException {
+        HttpSession session = req.getSession(false);
+
+        if (session == null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+            return;
+        }
+
+        User user = (User) session.getAttribute("customer");
+
+        if (user == null) {
+            user = (User) session.getAttribute("employee");
+        }
+
+        if (user == null) {
+            resp.setStatus(HttpServletResponse.SC_UNAUTHORIZED);
+        } else {
+            resp.getWriter().write(new ObjectMapper().writeValueAsString(user));
+        }
+    }
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) {
