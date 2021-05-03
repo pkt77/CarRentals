@@ -19,14 +19,14 @@ function initMap() {
         zoom: 4
     });
 
-    var pReq = new XMLHttpRequest();
+    const pReq = new XMLHttpRequest();
 
     pReq.onreadystatechange = function () {
         if (pReq.readyState === 4 && pReq.status === 200) {
             providers = JSON.parse(pReq.responseText);
 
-            for (var provider of providers) {
-                var mark = new google.maps.Marker({
+            for (const provider of providers) {
+                const mark = new google.maps.Marker({
                     position: {lat: provider['lat'], lng: provider['longitude']},
                     map: map
                 });
