@@ -21,8 +21,10 @@ document.getElementById('loginForm').addEventListener('submit', (event) => {
                 if (xhttp.status === 200) {
                     displayUser();
                     loadPage("/welcome");
-                } else {
-                    document.getElementById("msg").innerHTML = "That username or password did not match our records";
+                } else if (xhttp.status === 401) {
+                    document.getElementById("msg").innerHTML = "That username or password did not match our records.";
+                } else if (xhttp.status === 412) {
+                    document.getElementById("msg").innerHTML = "Your account is awaiting approval by an employee. Please come back later.";
                 }
             }
         }

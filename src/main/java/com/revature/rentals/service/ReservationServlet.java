@@ -91,7 +91,7 @@ public class ReservationServlet extends HttpServlet {
                                 "Number of Rental Days: " + days + "\n" +
                                 "Estimated Rental Cost: " + CURRENCY.format(cost) + "\n\n" +
                                 "Best regards,\n" +
-                                "Tourist Car Rentals").buildEmail());
+                                "Revature Car Rentals").buildEmail());
             }
         } catch (Exception e) {
             e.printStackTrace();

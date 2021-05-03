@@ -53,7 +53,12 @@ public class LoginServlet extends HttpServlet {
         Customer customer = repo.login(username, password);
 
         if (customer != null) {
-            session.setAttribute("customer", customer);
+            if (customer.isEnabled()) {
+                session.setAttribute("customer", customer);
+            } else {
+                session.invalidate();
+                resp.setStatus(HttpServletResponse.SC_PRECONDITION_FAILED);
+            }
             return;
         }
 

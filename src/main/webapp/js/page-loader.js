@@ -46,7 +46,6 @@ function displayUser() {
     http.onreadystatechange = function () {
         if (http.readyState === 4 && http.status === 200) {
             user = JSON.parse(http.responseText);
-            console.log(user);
 
             let nav = document.getElementById('account');
 
