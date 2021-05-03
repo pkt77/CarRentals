@@ -81,6 +81,10 @@ public class Customer extends User {
         return lastName;
     }
 
+    public Date getDob() {
+        return dob;
+    }
+
     public String getPhone() {
         return phone;
     }
@@ -103,6 +107,18 @@ public class Customer extends User {
 
     public int getPost() {
         return post;
+    }
+
+    public String getLicense() {
+        return license;
+    }
+
+    public String getIssued() {
+        return issued;
+    }
+
+    public Date getExpires() {
+        return expires;
     }
 
     public boolean isEnabled() {
