@@ -24,7 +24,7 @@ Car Rentals start by creating an account with your personal information includin
 
 > ### Database
 
-- [PostSQL](https://www.oracle.com/database/technologies/appdev/plsql.html)
+- [PostgresSQL](https://www.postgresql.org/docs/)
 
 > ### Automation
 
